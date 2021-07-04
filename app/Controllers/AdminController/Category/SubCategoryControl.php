@@ -128,7 +128,7 @@ class SubCategoryControl extends ResourceController
             ->join('work_img', 'all_work.aw_id = work_img.w_aw_id')
             ->join('package', ' all_work.aw_id = package.pk_aw_id')
             ->where('sub_cate.sub_cate_id', $id)
-            ->where('all_work.aw_status',  'Approve')
+            ->where('all_work.aw_status',  'ผ่านการอนุมัติ')
             ->groupBy('all_work.aw_id')
             ->findAll();
         return $this->respond($data);

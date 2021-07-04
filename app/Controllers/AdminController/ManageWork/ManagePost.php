@@ -21,7 +21,7 @@ class ManagePost extends ResourceController
             ->join('sub_cate', 'sub_cate.sub_cate_id = all_work.aw_sub_cate_id')
             ->join('student', 'student.std_id = all_work.aw_std_id')
             ->join('work_img', 'work_img.w_aw_id = all_work.aw_id')
-            ->where('aw_status', 'Not Approve')->groupBy('aw_id')
+            ->where('aw_status', 'ไม่ผ่านการอนุมัติ')->groupBy('aw_id')
             ->findAll();
         return $this->respond($res);
     }
@@ -34,7 +34,7 @@ class ManagePost extends ResourceController
             ->join('sub_cate', 'sub_cate.sub_cate_id = all_work.aw_sub_cate_id')
             ->join('student', 'student.std_id = all_work.aw_std_id')
             ->join('work_img', 'work_img.w_aw_id = all_work.aw_id')
-            ->where('aw_status', 'Wait')->groupBy('aw_id')
+            ->where('aw_status', 'รอดำเนินการ')->groupBy('aw_id')
             ->findAll();
         return $this->respond($res);
     }
@@ -47,7 +47,7 @@ class ManagePost extends ResourceController
             ->join('sub_cate', 'sub_cate.sub_cate_id = all_work.aw_sub_cate_id')
             ->join('student', 'student.std_id = all_work.aw_std_id')
             ->join('work_img', 'work_img.w_aw_id = all_work.aw_id')
-            ->where('aw_status', 'Approve')->groupBy('aw_id')
+            ->where('aw_status', 'ผ่านการอนุมัติ')->groupBy('aw_id')
             ->findAll();
         return $this->respond($res);
     }
@@ -62,7 +62,7 @@ class ManagePost extends ResourceController
         $Adminstatus = $this->request->getVar('Adminstatus');
         $checkAdmin = $AdminModel->where('status', $Adminstatus)->find();
         if (count($checkAdmin) != 0 && $UpdateStatus != null) {
-            if ($UpdateStatus == "Approve") {
+            if ($UpdateStatus == "ผ่านการอนุมัติ") {
                 $data = [
                     'aw_status' => $UpdateStatus,
                     'Comment' => " "
@@ -72,7 +72,7 @@ class ManagePost extends ResourceController
                     'message' =>  'success'
                 ];
                 return $this->respond($response);
-            } else if ($UpdateStatus == "Not Approve") {
+            } else if ($UpdateStatus == "ไม่ผ่านการอนุมัติ") {
                 $data = [
                     'aw_status' => $UpdateStatus,
                     'Comment' => $Comment

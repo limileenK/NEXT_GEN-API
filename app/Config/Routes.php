@@ -41,6 +41,7 @@ $routes->get('/show_work', 'WorkController/ShowWork::ShowAllWork');
 $routes->get('/PIC/(:any)', 'WorkController\ShowWork::showPIC/$1');
 $routes->get('/show_workCount', 'WorkController/ShowWork::ShowWorkCount');
 $routes->get('/detailpost/(:any)', 'WorkController\ShowWork::Selectbyid/$1');
+$routes->get('/freepost/(:any)', 'WorkController\ShowWork::Selectfreebyid/$1');
 $routes->post('/search', 'WorkController/SearchPost::searchWork');
 $routes->post('/insertcomment', 'WorkController/Insertcomment::addcomment');
 $routes->get('/show_comment/(:any)','WorkController\Showcom::showcomment/$1');

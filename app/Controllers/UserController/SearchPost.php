@@ -24,7 +24,7 @@ class SearchPost extends ResourceController
       ->orLike('aw_name', $keyword)
       ->join('sub_cate', 'sub_cate.sub_cate_id = all_work.aw_sub_cate_id')
       ->join('work_img', 'work_img.w_aw_id = all_work.aw_id')
-      ->where('aw_status', 'Approve')->groupBy('aw_id')
+      ->where('aw_status', 'ผ่านการอนุมัติ')->groupBy('aw_id')
       ->findAll();
       return $this->respond($data);
    }

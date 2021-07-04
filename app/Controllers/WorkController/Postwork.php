@@ -39,7 +39,7 @@ class Postwork extends ResourceController
                 'aw_name' => $Work_name,
                 'aw_detail' => $Work_detail,
                 'aw_sub_cate_id' => $Work_category,
-                'aw_status' => 'Not Approve'
+                'aw_status' => 'ไม่ผ่านการอนุมัติ'
             ];
             $PostworkModel->insert($work);
             if ($PostworkModel) {

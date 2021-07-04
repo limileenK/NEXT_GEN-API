@@ -20,7 +20,7 @@ class ShowWork extends ResourceController
         ->join('package', 'package.pk_aw_id = all_work.aw_id')
         ->join('work_img', 'work_img.w_aw_id = all_work.aw_id')
         ->join('student', 'student.std_id = all_work.aw_std_id')
-        ->where('aw_status', 'Approve')->groupBy('aw_id')
+        ->where('aw_status', 'ผ่านการอนุมัติ')->groupBy('aw_id')
         ->findAll();
         return $this->respond($data);
     }
@@ -40,7 +40,7 @@ class ShowWork extends ResourceController
             ->join('work_img', 'work_img.w_aw_id = all_work.aw_id')
             ->where('emm_status', 'success')->groupBy('emm_std_id')
             ->orderBy('emm_std_id', 'DESC')
-            ->where('aw_status', 'Approve')->groupBy('aw_id')
+            ->where('aw_status', 'ผ่านการอนุมัติ')->groupBy('aw_id')
 
             ->findAll();
         return $this->respond($data);
@@ -173,13 +173,25 @@ class ShowWork extends ResourceController
     {
         $PostworkModel = new PostworkModel();
         $data = $PostworkModel
-            ->join('package', 'package.pk_aw_id = all_work.aw_id')
-            ->join('student', 'student.std_id = all_work.aw_std_id')
-            ->join('work_img', 'work_img.w_aw_id = all_work.aw_id')
-            ->where('aw_id', $id)->groupBy('aw_id')
+            // ->join('package', 'package.pk_aw_id = all_work.aw_id')
+            // ->join('student', 'student.std_id = all_work.aw_std_id')
+            // ->join('work_img', 'work_img.w_aw_id = all_work.aw_id')
+            ->where('aw_id', $id)
             ->findAll();
         return $this->respond($data);
     }
+    public function Selectfreebyid($id = null) //หน้าhome
+    {
+        $PostworkModel = new PostworkModel();
+        $data = $PostworkModel
+           
+            ->join('student', 'student.std_id = all_work.aw_std_id')
+           
+            ->where('aw_id', $id)
+            ->findAll();
+        return $this->respond($data);
+    }
+
     public function Reviewbyid($id = null) //หน้าhome
     {
         $comment = new Comment();
