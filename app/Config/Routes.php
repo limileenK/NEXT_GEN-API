@@ -123,7 +123,7 @@ $routes->get('/employmentFlSuc/(:any)', 'WorkController\Employment::selEmploymen
 $routes->get('/employmentEpyReq/(:any)', 'WorkController\Employment::selectEmploymentForEpy/$1');
 $routes->get('/employmentEpyProgress/(:any)', 'WorkController\Employment::selectEmploymentForEpytoProgress/$1');
 $routes->get('/employmentEpySuc/(:any)', 'WorkController\Employment::selEmploymentForEpytoSuccess/$1');
-$routes->put('/employmentEpyReq/(:any)', 'WorkController\Employment::acceptFromFl/$1');
+$routes->put('/acceptFromFl/(:any)', 'WorkController\Employment::acceptFromFl/$1');
 
 $routes->delete('/employmentEpyReq/(:any)', 'WorkController\Employment::deleteFromEpy/$1');
 $routes->put('/employmentEpySuc/(:any)', 'WorkController\Employment::successFromEpy/$1');
