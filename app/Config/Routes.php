@@ -125,8 +125,8 @@ $routes->get('/employmentEpyProgress/(:any)', 'WorkController\Employment::select
 $routes->get('/employmentEpySuc/(:any)', 'WorkController\Employment::selEmploymentForEpytoSuccess/$1');
 $routes->put('/acceptFromFl/(:any)', 'WorkController\Employment::acceptFromFl/$1');
 
-$routes->delete('/employmentEpyReq/(:any)', 'WorkController\Employment::deleteFromEpy/$1');
-$routes->put('/employmentEpySuc/(:any)', 'WorkController\Employment::successFromEpy/$1');
+$routes->delete('/deleteFromEpy/(:any)', 'WorkController\Employment::deleteFromEpy/$1');
+$routes->put('/successFromEpy/(:any)', 'WorkController\Employment::successFromEpy/$1');
 $routes->get('/getHistoryEmp/(:any)', 'UserController\Employercontroller::getHistoryEmp/$1');
 
 
